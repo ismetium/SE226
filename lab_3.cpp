@@ -56,72 +56,73 @@ public:
     }
 
 
-int main() {
-    MyOperations op;
+    int main() {
+        MyOperations op;
 
-    cout << "--- Testing swapValues ---" << endl;
-    {
-        int sayı1 = 5;
-        int sayı2 = 8;
-        int *p1 = &sayı1;
-        int *p2 = &sayı2;
+        cout << "--- Testing swapValues ---" << endl;
+        {
+            int sayı1 = 5;
+            int sayı2 = 8;
+            int *p1 = &sayı1;
+            int *p2 = &sayı2;
 
-        op.swapValues(p1, p2);
+            op.swapValues(p1, p2);
 
-        cout << *p1 <<  endl;
-        cout << *p2 <<  endl;
-    }
-
-    cout << "\n--- Testing printArray ---" << endl;
-    {
-        int size;
-
-        cout << "Enter an Array size : " << endl;
-        cin >> size;
-
-        int* arr = new int[size];
-
-        cout << "Enter Array elements : " << endl;
-        for (int i = 0; i < size; i++) {
-            cin >> arr[i];
+            cout << *p1 <<  endl;
+            cout << *p2 <<  endl;
         }
-        op.printArray(arr, size);
-        
-        delete[] arr; // Sızıntı olmaması için eklendi (orijinalinde yoktu ama bellekte kalmasın)
-    }
 
-    cout << "\n--- Testing findSum ---" << endl;
-    {
-        int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        op.findSum(arr, 10);
-    }
+        cout << "\n--- Testing printArray ---" << endl;
+        {
+            int size;
 
-    cout << "\n--- Testing shiftRight ---" << endl;
-    {
-        int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        op.shiftRight(arr, 10);
+            cout << "Enter an Array size : " << endl;
+            cin >> size;
 
-        for (int i = 0; i < 10; i++) {
-            cout << arr[i] << " ";
+            int* arr = new int[size];
+
+            cout << "Enter Array elements : " << endl;
+            for (int i = 0; i < size; i++) {
+                cin >> arr[i];
+            }
+            op.printArray(arr, size);
+
+            delete[] arr; // Sızıntı olmaması için eklendi (orijinalinde yoktu ama bellekte kalmasın)
         }
-        cout << endl;
+
+        cout << "\n--- Testing findSum ---" << endl;
+        {
+            int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            op.findSum(arr, 10);
+        }
+
+        cout << "\n--- Testing shiftRight ---" << endl;
+        {
+            int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            op.shiftRight(arr, 10);
+
+            for (int i = 0; i < 10; i++) {
+                cout << arr[i] << " ";
+            }
+            cout << endl;
+        }
+
+        cout << "\n--- Testing createArray ---" << endl;
+        {
+            int size;
+
+            cout << "Enter array size: ";
+            cin >> size;
+            int* myArray = op.createArray(size);
+            delete[] myArray;
+        }
+
+        cout << "\n--- Testing deleteArray ---" << endl;
+        {
+            int* arr = new int[5];
+            op.deleteArray(arr);
+        }
+
+        return 0;
     }
-
-    cout << "\n--- Testing createArray ---" << endl;
-    {
-        int size;
-
-        cout << "Enter array size: ";
-        cin >> size;
-        int* myArray = op.createArray(size);
-        delete[] myArray;
-    }
-
-    cout << "\n--- Testing deleteArray ---" << endl;
-    {
-        int* arr = new int[5];
-        op.deleteArray(arr);
-    }
-
-    return 0;
-}
+};
